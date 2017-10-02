@@ -5,9 +5,14 @@ const db    = require('../models');
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   db.user.findAll({
-    include: [{
-      model: db.question
-    }]
+    include: [
+      {
+        model: db.score
+      },
+      {
+        model: db.question
+      }
+  ]
   })
     .then((users) => {
       res.json(users);
@@ -16,5 +21,13 @@ router.get('/', function(req, res, next) {
       res.status(500).json(err);
     })
 });
+
+router.get('/scores', (req,res,next) => {
+  db.score.findAll()
+    .then((scores) => {
+      res.json(scores)
+    })
+    .catch(err=>res.status(500).json(err));
+})
 
 module.exports = router;

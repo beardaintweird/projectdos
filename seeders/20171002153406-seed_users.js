@@ -5,11 +5,13 @@ module.exports = {
     return queryInterface.bulkInsert('users', [
       {
       userId: 1,
+      scoreId: 1,
       username: 'beardaintweird',
       name: 'Samee Khan'
     },
     {
       userId: 2,
+      scoreId: 2,
       username: 'alanabanana',
       name: 'Alana Alfeche'
     }

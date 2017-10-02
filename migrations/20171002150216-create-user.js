@@ -17,6 +17,9 @@ module.exports = {
       name: {
         type: Sequelize.TEXT
       },
+      scoreId: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         type: Sequelize.DATE
       },

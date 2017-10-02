@@ -7,7 +7,10 @@ module.exports = (sequelize, DataTypes) => {
     answer: DataTypes.TEXT
   });
   question.associate = function(models) {
-    question.belongsToMany(models.user, {through: 'user_question', underscored: true})
+    question.belongsToMany(models.user, {
+      through: 'user_question',
+      underscored: true
+    })
   }
   return question;
 };
