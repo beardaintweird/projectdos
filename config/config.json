@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "",
+    "password": "",
+    "database": "salamee",
+    "host": "localhost",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "",
+    "password": "",
+    "database": "database_test",
+    "host": "localhost",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "",
+    "password": "",
+    "database": "database_production",
+    "host": "localhost",
+    "dialect": "postgres"
+  }
+}
