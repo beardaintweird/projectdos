@@ -1,0 +1,25 @@
+{
+  "name": "unitprojects",
+  "version": "1.0.0",
+  "private": true,
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+  "start:dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "express": "^4.16.1",
+    "express-ejs-layouts": "^2.3.1",
+    "method-override": "^2.3.10",
+    "pg": "^7.3.0",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.13.1",
+    "sequelize-cli": "^3.0.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^3.5.3",
+    "supertest": "^3.0.0"
+  }
+}
