@@ -1,12 +1,11 @@
-var express       = require('express');
-var path          = require('path');
-var favicon       = require('serve-favicon');
-var logger        = require('morgan');
-var cookieParser  = require('cookie-parser');
-var bodyParser    = require('body-parser');
-var app           = express();
-var passport      = require('passport');
-// var express_sesh  = require('express-session');
+var express          = require('express');
+var path             = require('path');
+var favicon          = require('serve-favicon');
+var logger           = require('morgan');
+var cookieParser     = require('cookie-parser');
+var bodyParser       = require('body-parser');
+var app              = express();
+var passport         = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
 var configAuth       = require('./config/auth');
 var db               = require('./models')
@@ -24,6 +23,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(bodyParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+//********************// PASSPORT.JS //********************//
 
 // Serialize Sessions
 passport.serializeUser(function(user, cb) {
@@ -49,11 +51,12 @@ passport.use(new FacebookStrategy({
   }
 ));
 
-
-// Initialize Passport and restore authentication state, if any, from the
-// session.
+// Initialize Passport and restore authentication state
 app.use(passport.initialize());
 app.use(passport.session());
+
+//********************// PASSPORT.JS //********************//
+
 
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));

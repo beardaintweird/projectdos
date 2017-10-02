@@ -1,7 +1,7 @@
 var express   = require('express');
 var router    = express.Router();
 var passport  = require('passport');
-var flash = require('connect-flash');
+var flash     = require('connect-flash');
 
 // route for homepage
 router.get('/', function(req, res) {
