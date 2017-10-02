@@ -11,6 +11,9 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER
       },
+      facebookId: {
+        type: Sequelize.INTEGER
+      },
       username: {
         type: Sequelize.STRING
       },
