@@ -5,13 +5,9 @@ module.exports = (sequelize, DataTypes) => {
     opt1: DataTypes.TEXT,
     opt2: DataTypes.TEXT,
     answer: DataTypes.TEXT
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-        this.belongsToMany(models.user, through: {'user_question'})
-      }
-    }
   });
+  question.associate = function(models) {
+    question.belongsToMany(models.user, {through: 'user_question', underscored: true})
+  }
   return question;
 };

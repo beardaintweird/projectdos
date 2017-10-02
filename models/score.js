@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var score = sequelize.define('score', {
-    user_id: DataTypes.INTEGER,
+    userId: DataTypes.INTEGER,
     score: DataTypes.INTEGER
   }, {
     classMethods: {

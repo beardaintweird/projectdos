@@ -4,11 +4,11 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('scores', [
       {
-        user_id: 1,
+        userId: 1,
         score: 0
       },
       {
-        user_id: 2,
+        userId: 2,
         score: 1
       }
   ], {});
