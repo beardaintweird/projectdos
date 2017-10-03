@@ -8,14 +8,6 @@ router.get('/', function(req, res) {
   res.render('index');
 });
 
-// route for login form
-router.get('/login', function(req, res) {
-  res.render('login', {message: ('loginMessage') });
-});
-
-// route for processing the login form
-// router.post('/login', passport.authenticate())
-
 // route for showing the profile page
 router.get('/profile', isLoggedIn, function(req, res) {
   res.render('profile', {user : req.user });
