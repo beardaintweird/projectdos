@@ -29,6 +29,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
 
+// app.use('/', require('./routes/index'));
+app.use('/users', require('./routes/users'));
+
 
 //********************// PASSPORT.JS //********************//
 
@@ -43,61 +46,48 @@ passport.deserializeUser(function(obj, done) {
 })
 
 // Authentication Purposes
-
-var fbAuth = {
+passport.use(new FacebookStrategy({
   clientID    : '178205629406652',
   clientSecret: '2aef7dc8368ca804cc0b126fc15894f6',
   callbackURL : 'http://localhost:3000/auth/facebook/callback'
-};
+},
 
-var fbCallBack = function(accessToken, refreshToken, profile, done) {
-  console.log(accessToken, refreshToken, profile);
+// function(accessToken, refreshToken, profile, done) {
+//   console.log('accessToken', accessToken, 'refereshToken', refreshToken, 'profile', profile);
+//   process.nextTick(function() {
+//
+//         User.findOrCreate({
+//           where: {
+//             facebookId: profile.id,
+//             displayName: profile.displayName
+//           }, function(err, user) {
+//             if (err)  {
+//               console.log('error');
+//               return done(err);
+//               }
+//             if (user) {
+//               console.log('user');
+//
+//               return done (null, user);
+//               }
+//           }
+//
+//         });
+//       });
+//     }
+(req, token, refreshToken, profile, done) => {
+    console.log('token', token, 'refereshToken', refreshToken, 'profile', profile);
 
-  process.nextTick(function() {
-    // User.findOne({
-    //   where:facebookId: profile.id}, function (err, user) {
-    //
-    //   if (err)
-    //     return done(err);
-    //
-    //   if (user) {
-    //     return(null, user);
-    //   } else {
-    //
-    //     var newUser            = new User();
-    //     newUser.facebookId     = profile.id;
-    //
-    //     newUser.save(function(err) {
-    //       if (err)
-    //         throw err;
-    //
-    //       return done(null, newUser);
-    //     });
-    //   }
-    // });
-    //
-    // User.create({
-    //
-    // })
-    User.findOrCreate({
-      where: {
-        facebookId: profile.id,
-        displayName: profile.displayName
-        }
-      }), function (err, done) {
-    return done(err, user);
-  }
+    //Do your staff here, whatever you want...
 
-  });
-};
+    //But this is very very important
+    return done(null, profile);
 
-passport.use(new FacebookStrategy(fbAuth, fbCallBack));
+  }));
+
 
 
 //********************// PASSPORT.JS //********************//
-
-// app.use('/', require('./routes/index'));
-app.use('/users', require('./routes/users'));
 
 //********************// PASSPORT.JS //********************//
 
@@ -112,21 +102,25 @@ app.get('/profile', isLoggedIn, function(req, res) {
 
 // route for facebook authentication and login
 app.get('/auth/facebook',
-  passport.authenticate('facebook'));
+  passport.authenticate('facebook', { session: false }));
 
 // handle the callback after facebook has authenticated the user
-app.get('/auth/facebook/callback',
-  passport.authenticate('facebook', function(err, user, info){
-    // console.log(err, user, info)
-    successRedirect : '/profile'
-    failureRedirect : '/'
-  }));
+// app.get('/auth/facebook/callback',
+//   passport.authenticate('facebook', {
+//     successRedirect : '/profile',
+//     failureRedirect : '/'
+// }));
+
+app.get('/auth/facebook/callback', passport.authenticate('facebook', { session: false }), (req, res) => {
+    res.render('profile');
+});
+
 
 // route for loggin out
 app.get('/logout', function(req, res) {
   req.logout();
   res.redirect('/');
-})
+});
 
 app.use(flash());
 
@@ -140,6 +134,7 @@ function isLoggedIn(req, res, next) {
     // if they aren't redirect them to the home page
     res.redirect('/');
 }
+
 //********************// PASSPORT.JS //********************//
 
 // catch 404 and forward to error handler
