@@ -12,13 +12,10 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       facebookId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT.UNSIGNED
       },
-      username: {
+      displayName: {
         type: Sequelize.STRING
-      },
-      name: {
-        type: Sequelize.TEXT
       },
       scoreId: {
         type: Sequelize.INTEGER

@@ -81,10 +81,11 @@ var fbCallBack = function(accessToken, refreshToken, profile, done) {
     // })
     User.findOrCreate({
       where: {
-        facebookId: profile.id
+        facebookId: profile.id,
+        displayName: profile.displayName
         }
-      }), function (err, user) {
-    return cb(err, user);
+      }), function (err, done) {
+    return done(err, user);
   }
 
   });
