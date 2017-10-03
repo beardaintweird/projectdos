@@ -112,7 +112,8 @@ app.get('/auth/facebook',
 // }));
 
 app.get('/auth/facebook/callback', passport.authenticate('facebook', { session: false }), (req, res) => {
-    res.render('profile');
+    res.render('profile', {user: req.user});
+    console.log('req.user', req.user);
 });
 
 
