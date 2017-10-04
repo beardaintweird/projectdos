@@ -29,8 +29,7 @@ body {
   width:60vw;
   box-shadow:0 0 20px rgba(0,0,0,0.2);
   background-color: white;
-  animation-name: showcase;
-  animation-duration: 3.0s;
+  animation-duration: 2.0s;
   animation-timing-function: ease-in-out;
   position:absolute;
   top:50%;
@@ -41,6 +40,19 @@ body {
   position: absolute;
   z-index: 5;
   padding: 50px 70px;
+}
+
+.signup {
+  color: #72bcbd;
+}
+.register{
+   position: absolute;
+   z-index: 6;
+   height:40vh;
+   width:60vw;
+   left:20%;
+   top: 45%;
+   background-color: white;
 }
 
 .container-left{
@@ -64,6 +76,11 @@ body {
 .input {
   padding: 2px 5vw;
 }
+
+.signupInput {
+  padding: 10vh 10vw;
+}
+
 
 .image{
   position: absolute;
@@ -103,7 +120,6 @@ body {
     background-color: white;
   }
 }
-
 
 .image{
   position: absolute;
@@ -256,4 +272,8 @@ button {
 
 .form-group{
   padding: 0px;
+}
+
+.goBack {
+  background-color: #f55c5c;
 }

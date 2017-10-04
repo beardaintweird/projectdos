@@ -7,17 +7,18 @@ var bodyParser       = require('body-parser');
 var app              = express();
 var passport         = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
+var LocalStrategy    = require('passport-local').Strategy;
 var configAuth       = require('./config/auth');
 var db               = require('./models')
 var User             = db.user;
 var flash            = require('connect-flash');
+var path             = require('path');
+var session          = require('express-session');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -29,13 +30,36 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
 
-// app.use('/', require('./routes/index'));
+app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
 app.use('/questions', require('./routes/questions'));
 
+//********************// PASSPORT.JS LOCAL //********************//
+// Authentication Purposes
+// passport.use(new LocalStrategy(
+//   function(username, password, cb) {
+//     User.findOrCreate({
+//       where: {
+//         facebookId: profile.id,
+//         displayName: profile.displayName
+//       }, function(err, user) {
+//         if (err)  {
+//           console.log('error');
+//           return done(err);
+//           }
+//         if (user) {
+//           console.log('user');
+//
+//           return done (null, user);
+//           }
+//       }
+//
+//   }));
+//
+//********************// PASSPORT.JS LOCAL //********************//
 
-//********************// PASSPORT.JS //********************//
 
+//********************// PASSPORT.JS  //********************//
 // Serialize Sessions
 passport.serializeUser(function(user, done) {
   done(null, user);
@@ -45,7 +69,11 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(obj, done) {
   done(null, obj);
 })
+//********************// PASSPORT.JS  //********************//
 
+
+
+//********************// PASSPORT.JS FACEBOOK //********************//
 // Authentication Purposes
 passport.use(new FacebookStrategy({
   clientID    : '178205629406652',
@@ -76,8 +104,9 @@ passport.use(new FacebookStrategy({
 //         });
 //       });
 //     }
-(req, token, refreshToken, profile, done) => {
-    console.log('token', token, 'refereshToken', refreshToken, 'profile', profile);
+
+(req, accessToken, refreshToken, profile, done) => {
+    // console.log('accessToken', accessToken, 'refereshToken', refreshToken, 'profile', profile);
 
     //Do your staff here, whatever you want...
 
@@ -85,20 +114,20 @@ passport.use(new FacebookStrategy({
     return done(null, profile);
 
   }));
+//********************// PASSPORT.JS FACEBOOK //********************//
 
 
 
-//********************// PASSPORT.JS //********************//
+//********************// PASSPORT.JS FACEBOOK ROUTES//********************//
 
-//********************// PASSPORT.JS //********************//
 app.get('/', (req,res) => {
-  res.render('index');
-})
+    res.render('index');
+  })
 
 
 // route for showing the profile page
-app.get('/profile', isLoggedIn, function(req, res) {
-  res.render('profile', {user : req.user });
+app.get('/fbprofile', isLoggedIn, function(req, res) {
+  res.render('fbprofile', {user : req.user });
 });
 
 // route for facebook authentication and login
@@ -113,7 +142,7 @@ app.get('/auth/facebook',
 // }));
 
 app.get('/auth/facebook/callback', passport.authenticate('facebook', { session: false }), (req, res) => {
-    res.render('profile', {user: req.user});
+    res.render('fbprofile', {user: req.user});
     console.log('req.user', req.user);
 });
 
@@ -135,25 +164,26 @@ function isLoggedIn(req, res, next) {
     // if they aren't redirect them to the home page
     res.redirect('/');
 }
+//********************// PASSPORT.JS FACEBOOK ROUTES//********************//
 
-//********************// PASSPORT.JS //********************//
-
+//********************// ERROR //********************//
 // catch 404 and forward to error handler
-// app.use(function(req, res, next) {
-//   var err = new Error('Not Found');
-//   err.status = 404;
-//   next(err);
-// });
-//
-// // error handler
-// app.use(function(err, req, res, next) {
-//   // set locals, only providing error in development
-//   res.locals.message = err.message;
-//   res.locals.error = req.app.get('env') === 'development' ? err : {};
-//
-//   // render the error page
-//   res.status(err.status || 500);
-//   res.render('error');
-// });
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
+//********************// ERROR //********************//
 
 module.exports = app;
