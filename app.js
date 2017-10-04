@@ -11,6 +11,7 @@ var configAuth       = require('./config/auth');
 var db               = require('./models')
 var User             = db.user;
 var flash            = require('connect-flash');
+var path             = require('path');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -29,7 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
 
-// app.use('/', require('./routes/index'));
+app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
 
 
@@ -84,10 +85,6 @@ passport.use(new FacebookStrategy({
     return done(null, profile);
 
   }));
-
-
-
-//********************// PASSPORT.JS //********************//
 
 //********************// PASSPORT.JS //********************//
 
