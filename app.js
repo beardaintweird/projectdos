@@ -32,10 +32,34 @@ app.use(passport.session());
 
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
+app.use('/questions', require('./routes/questions'));
+
+//********************// PASSPORT.JS LOCAL //********************//
+// Authentication Purposes
+// passport.use(new LocalStrategy(
+//   function(username, password, cb) {
+//     User.findOrCreate({
+//       where: {
+//         facebookId: profile.id,
+//         displayName: profile.displayName
+//       }, function(err, user) {
+//         if (err)  {
+//           console.log('error');
+//           return done(err);
+//           }
+//         if (user) {
+//           console.log('user');
+//
+//           return done (null, user);
+//           }
+//       }
+//
+//   }));
+//
+//********************// PASSPORT.JS LOCAL //********************//
 
 
-//********************// PASSPORT.JS FACEBOOK //********************//
-
+//********************// PASSPORT.JS  //********************//
 // Serialize Sessions
 passport.serializeUser(function(user, done) {
   done(null, user);
@@ -45,7 +69,11 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(obj, done) {
   done(null, obj);
 })
+//********************// PASSPORT.JS  //********************//
 
+
+
+//********************// PASSPORT.JS FACEBOOK //********************//
 // Authentication Purposes
 passport.use(new FacebookStrategy({
   clientID    : '178205629406652',
@@ -86,18 +114,20 @@ passport.use(new FacebookStrategy({
     return done(null, profile);
 
   }));
-
 //********************// PASSPORT.JS FACEBOOK //********************//
+
+
+
+//********************// PASSPORT.JS FACEBOOK ROUTES//********************//
+
 app.get('/', (req,res) => {
-  res.render('index');
-})
-app.use('/', require('./routes/index'));
-app.use('/users', require('./routes/users'));
-app.use('/questions', require('./routes/questions'));
+    res.render('index');
+  })
+
 
 // route for showing the profile page
-app.get('/profile', isLoggedIn, function(req, res) {
-  res.render('profile', {user : req.user });
+app.get('/fbprofile', isLoggedIn, function(req, res) {
+  res.render('fbprofile', {user : req.user });
 });
 
 // route for facebook authentication and login
@@ -134,9 +164,9 @@ function isLoggedIn(req, res, next) {
     // if they aren't redirect them to the home page
     res.redirect('/');
 }
+//********************// PASSPORT.JS FACEBOOK ROUTES//********************//
 
-//********************// PASSPORT.JS FACEBOOK //********************//
-
+//********************// ERROR //********************//
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -154,5 +184,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+//********************// ERROR //********************//
 
 module.exports = app;

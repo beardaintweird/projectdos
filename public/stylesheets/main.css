@@ -42,6 +42,19 @@ body {
   padding: 50px 70px;
 }
 
+.signup {
+  color: #72bcbd;
+}
+.register{
+   position: absolute;
+   z-index: 6;
+   height:40vh;
+   width:60vw;
+   left:20%;
+   top: 45%;
+   background-color: white;
+}
+
 .container-left{
   margin-top: 20px;
   margin-top: 0px;
@@ -63,6 +76,11 @@ body {
 .input {
   padding: 2px 5vw;
 }
+
+.signupInput {
+  padding: 10vh 10vw;
+}
+
 
 .image{
   position: absolute;
@@ -254,4 +272,8 @@ button {
 
 .form-group{
   padding: 0px;
+}
+
+.goBack {
+  background-color: #f55c5c;
 }

@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="/stylesheets/profile.css" />
+    <title>COAR.Xperience</title>
+  </head>
+
+    <body>
+
+      <div id="background">
+          <div class="profile_container text-center">
+                <h2> Hello <%= user.displayName %> </h2>
+                <h1> Welcome to AR.Xperience </h1>
+                <p>
+                    ID: <%= user.id %><br/>
+                    Username: <%= user.username %><br/>
+                    Name: <%= user.displayName %><br/>
+                    <% if (user.emails) { %>
+                    Email: <%= user.emails[0].value %><br/>
+                    <% } %>
+                </p>
+                <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+          </div>
+      </div>
+
+
+      <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+      <script>
+        setTimeout(responsiveVoice.speak("Welcome to the A R Experience" + "<%= user.displayName %>"),15000);
+      </script>
+
+    </body>
+
+</html>

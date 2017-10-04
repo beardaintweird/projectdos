@@ -57,8 +57,8 @@
                         <input type="submit" value="submit" class="btn btn-primary btn-lg btn-block  "></input>
                       </div>
 
-                      <div class="register">
-                        <p> Don't have an account? <a class="signup" href=""> Sign up  </a> </p>
+                      <div>
+                        <p> Don't have an account? <text class="signup"> Sign up </text> </p>
                       </div>
 
                     </div>
@@ -73,14 +73,35 @@
                   <a class="fa fa-twitter btn btn-secondary btn-lg btn-block light blue" href="">  Twitter  </a>
 
                   <a class="fa fa-linkedin btn btn-secondary btn-lg btn-block green" href="">  Linkedin  </a>
-                </
+
               </div>
 
           </div>
 
-
       </div>
+
+      <div class="register">
+
+        <div class="signupInput">
+        <form action ="" method="post">
+
+          <div class="form-group">
+            <input type="text" name="displayname" class="form-control" id="usr" placeholder="Full Name">
+          </div>
+
+          <div class="form-group">
+            <input type="text" name="username" class="form-control" id="usr" placeholder="Username">
+          </div>
+          <div class="form-group">
+            <input type="password" name="password" class="form-control" id="pwd" placeholder="Password">
+          </div>
+        </form>
+
+        <button class="goBack btn btn-primary btn-lg btn-block"> Taste the Xperience </button>
+      </div>
+
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="/javascripts/main.js" charset="utf-8"></script>
   </body>
 

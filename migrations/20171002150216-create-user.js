@@ -17,6 +17,9 @@ module.exports = {
       displayName: {
         type: Sequelize.STRING
       },
+      password: {
+        type: Sequelize.STRING
+      },
       scoreId: {
         type: Sequelize.INTEGER
       },
