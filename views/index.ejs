@@ -6,13 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-touch-fullscreen" content="yes" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" href="/stylesheets/main.css" />
     <title>COAR.Xperience</title>
   </head>
-
 
   <body>
     <div id="background">
@@ -39,35 +38,37 @@
             </h1>
           </div>
 
-          <div class="container">
+          <div class="container text-center">
 
               <div class="container-left" style="float: left; width: 50%">
-                <h4 style="float: left"> Sign in</h4>
+                <h4> Sign in</h4>
 
-                <div class="form-group">
-                  <input type="text" class="form-control" id="usr" placeholder="Username">
-                </div>
-                <div class="form-group">
-                  <input type="password" class="form-control" id="pwd" placeholder="Password">
-                </div>
+                <div class="input">
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="usr" placeholder="Username">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" id="pwd" placeholder="Password">
+                  </div>
 
-                <div class="button">
-                  <button>Log In</button>
-                </div>
+                  <div class="login">
+                    <button class="btn btn-primary btn-lg btn-block  ">Log In</button>
+                  </div>
 
-                <div class="register">
-                  <button>Sign Up</button>
-                </div>
+                  <div class="register">
+                    <p> Don't have an account? <a class="signup" href=""> Sign up  </a> </p>
+                  </div>
 
+                </div>
               </div>
 
               <div class="container-right" style="float: left; width: 50%">
                 <h4> or Login with: </h4>
                 <div class="authButton">
-                  <a class="btn btn-secondary btn-lg btn-block blue" href="/auth/facebook">  Facebook  </a>
-                  <a class="btn btn-secondary btn-lg btn-block white" href="">  Twitter  </a>
-                  <a class="btn btn-secondary btn-lg btn-block red" href="">  Google  </a>
-                  <a class="btn btn-secondary btn-lg btn-block green" href="">  Linkedin  </a>
+                  <a class="fa fa-facebook btn btn-secondary btn-lg btn-block blue" href="/auth/facebook">  Facebook  </a>
+                  <a class="fa fa-twitter btn btn-secondary btn-lg btn-block light blue" href="">  Twitter  </a>
+                  <a class="fa fa-google btn btn-secondary btn-lg btn-block red" href="">  Google  </a>
+                  <a class="fa fa-linkedin btn btn-secondary btn-lg btn-block green" href="">  Linkedin  </a>
                 </
               </div>
 

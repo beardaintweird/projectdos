@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
-@import url('https://fonts.googleapis.com/css?family=Dancing+Script');
 
 body {
   padding: 0px;
@@ -25,15 +24,11 @@ body {
    opacity: 0.9;
 }
 
-.fa-facebook {
-  background: rgba(216, 46, 46, 0.70);
-}
-
 .container{
   height:40vh;
   width:60vw;
   box-shadow:0 0 20px rgba(0,0,0,0.2);
-  background: rgba(255, 255, 255, 0.80);
+  background-color: white;
   animation-name: showcase;
   animation-duration: 3.0s;
   animation-timing-function: ease-in-out;
@@ -65,6 +60,11 @@ body {
 .authButton {
   padding: 2px 5vw;
 }
+
+.input {
+  padding: 2px 5vw;
+}
+
 .image{
   position: absolute;
   z-index: 4;
@@ -100,7 +100,7 @@ body {
     height:40vh;
     width:60vw;
     overflow:hidden;
-  background: rgba(255, 255, 255, 0.80);
+    background-color: white;
   }
 }
 
@@ -219,10 +219,6 @@ span {
   animation-delay: 1.9s;
 }
 
-.auth {
-  color: white;
-}
-
 .ease {
   position: absolute;
   height: 80vh;
@@ -249,16 +245,15 @@ button {
   font-family: 'Quicksand', sans-serif;
 }
 
-.button, .register {
-  border: 1px solid black;
+.button {
   margin: 0 auto;
   text-align: center;
 }
 
-.register {
-  margin-top: 10px;
-}
-
 .button:hover{
   color: white;
+}
+
+.form-group{
+  padding: 0px;
 }
