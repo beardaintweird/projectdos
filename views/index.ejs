@@ -1,27 +1,52 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-    <title>Salamee Authentication</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
 
-    <style>
-        body        { padding-top:80px; }
-    </style>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <title>COAR.Xperience</title>
+  </head>
 
-</head>
-<body>
-<div class="container">
 
-    <div class="jumbotron text-center">
-        <h1><span class="fa fa-lock"></span> Salamee Authentication</h1>
+  <body>
+    <div id="background">
+      <div id="color-overlay">
+        <!-- <img src="./images/capone.png" class="image"> -->
+        <div class="ease"> </div>
+        <div class="ease2"> </div>
 
-        <p>Login with:</p>
+          <div class="opening">
+            <h1 class="capOne"> CAPONE CAFé </h1>
+            <h1 class="letters">
+              <span class="let1">A</span>
+              <span class="let2">R</span>
+              <span class="let3">.</span>
+              <span class="let4">X</span>
+              <span class="let5">p</span>
+              <span class="let6">e</span>
+              <span class="let7">r</span>
+              <span class="let8">i</span>
+              <span class="let9">e</span>
+              <span class="let10">n</span>
+              <span class="let11">c</span>
+              <span class="let12">e</span>
+            </h1>
+          </div>
 
-        <a href="/auth/facebook" class="btn  btn-primary"><span class="fa fa-facebook"></span> Facebook</a>
+          <div class="jumbotron text-center">
+              <h1>Account Login</h1>
+              <a class="btn btn-danger btn-lg red" href="/auth/facebook">  Facebook  </a>
+          </div>
 
+      </div>
     </div>
+    <script src="/javascripts/main.js" charset="utf-8"></script>
+  </body>
 
-</div>
-</body>
 </html>

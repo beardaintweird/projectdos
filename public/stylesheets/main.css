@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Quicksand:300');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script');
 
 body {
   padding: 0px;
@@ -24,26 +25,32 @@ body {
    opacity: 0.9;
 }
 
+.jumbotron {
+  margin-top: 50px;
+  width:60vw;
+  position: relative;
+  left:20%;
+  z-index: 6;
+  padding: 40px;
+}
+
+.fa-facebook {
+  background: rgba(216, 46, 46, 0.70);
+
+}
 .container{
   height:400px;
   width:400px;
   box-shadow:0 0 20px rgba(0,0,0,0.2);
   background: rgba(216, 46, 46, 0.70);
-  animation-name: showcase;
-  animation-duration: 2.0s;
-  animation-timing-function: ease-in-out;
+  /*animation-name: showcase;*/
+  animation-duration: 2.5s;
+  animation-timing-function: ease-in;
   position:absolute;
-  top:50%;
+  top:60%;
   left:50%;
   transform:translate(-50%,-50%);
   z-index: 1;
-}
-
-.image{
-  position: absolute;
-  z-index: 4;
-  top: 15%;
-  left: 36.5%;
 }
 
 @keyframes showcase{
@@ -74,41 +81,139 @@ body {
   }
 }
 
-#username, #password{
-  font-size: 3em;
-  font-spacing: 0.2px;
-  background: transparent;
-  border: 0px;
-  color:white;
+.image{
+  position: absolute;
+  z-index: 4;
+  top: 15%;
+  left: 36.5%;
+}
+
+.opening {
+  margin-top: 220px;
+}
+h1 {
   text-align: center;
-  width: 400px;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Roboto Slab', serif;
+}
+
+.capOne {
+  font-size: 6em;
+  color: white;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  margin-bottom: 0px;
+}
+
+.letters {
+  margin-top: 0px;
+}
+
+span {
+  font-size: 1.2em;
+  opacity: 0;
+  color: white;
+  font-weight: 600;
+}
+
+@keyframes drop {
+    0% {
+        opacity: 0.2;
+    }
+    40% {
+        opacity: 1.0;
+    }
+    90% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0.8;
+    }
+}
+
+.let1 {
+  animation: drop 2.0s ease-in-out infinite;
+  animation-delay: 1.2s;
+  color: #f55c5c;
+}
+
+.let2 {
+  animation: drop 2.0s ease-in-out infinite;
+  animation-delay: 1.28s;
+  color: #f55c5c;
 
 }
 
-input::placeholder {
-    color: rgba(255, 255, 255, 0.70);
+.let3 {
+  animation: drop 2.0s ease-in-out infinite;
+  animation-delay: 1.3s;
 }
 
-.input {
-  margin-top: 50px;
-  margin-bottom: 50px;
+.let4 {
+  animation: drop 2.0s ease-in-out infinite;
+  animation-delay: 1.35s;
+
 }
 
-button {
-  background-color: transparent;
-  border: 0px;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 2.5em;
+.let5 {
+  animation: drop 2.0s ease-in-out infinite;
+  animation-delay: 1.4s;
 }
 
-.button, .register {
-  border: 1px solid black;
-  width: 300px;
-  margin: 0 auto;
-  text-align: center;
+.let6 {
+  animation: drop 2.0s ease-in-out infinite;
+  animation-delay: 1.45s;
 }
 
-.register {
-  margin-top: 10px;
+.let7 {
+  animation: drop 2.0s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+
+.let8 {
+  animation: drop 2.0s ease-in-out infinite;
+  animation-delay: 1.55s;
+}
+
+.let9 {
+  animation: drop 2.0s ease-in-out infinite;
+  animation-delay: 1.6s;
+}
+
+.let10 {
+  animation: drop 2.0s ease-in-out infinite;
+  animation-delay: 1.7s;
+}
+
+.let11 {
+  animation: drop 2.0s ease-in-out infinite;
+  animation-delay: 1.8s;
+}
+
+.let12 {
+  animation: drop 2.0s ease-in-out infinite;
+  animation-delay: 1.9s;
+}
+
+.auth {
+  color: white;
+}
+
+.ease {
+  position: absolute;
+  height: 80vh;
+  width: 50vw;
+  border: 1px solid white;
+  z-index: 4;
+  top: 10%;
+  left: 25%;
+}
+
+.ease2 {
+  position: absolute;
+  height: 70vh;
+  width: 60vw;
+  border: 1px solid white;
+  z-index: 4;
+  top: 15%;
+  left: 20%;
 }

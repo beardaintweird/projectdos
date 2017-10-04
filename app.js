@@ -116,7 +116,6 @@ app.get('/auth/facebook/callback', passport.authenticate('facebook', { session: 
     console.log('req.user', req.user);
 });
 
-
 // route for loggin out
 app.get('/logout', function(req, res) {
   req.logout();
