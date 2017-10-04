@@ -42,15 +42,14 @@ body {
   left:50%;
   transform:translate(-50%,-50%);
   z-index: 1;
-  margin-top: 140px;
+  margin-top: 143px;
   position: absolute;
   z-index: 5;
-  padding: 50px;
+  padding: 50px 70px;
 }
 
 .container-left{
   margin-top: 20px;
-
   margin-top: 0px;
   padding: 0px 20px;
   border-right: 1px solid black;
@@ -75,25 +74,29 @@ body {
 
 @keyframes showcase{
   0%{
-    width:1vw;
+    padding: 0px;
+    width:0.1vw;
     height:15vh;
     overflow:hidden;
     background:black;
   }
   40%{
-    width:1vw;
+    padding: 0px;
+    width:0.1vw;
     height:40vh;
     overflow:hidden;
 /*     background: rgba(216, 46, 46, 0.20); */
     background:black;
   }
   80%{
+    padding: 50px 70px;
     height:40vh;
     width:60vw;
     overflow:hidden;
   background: rgba(255, 255, 255, 0.80);
   }
   100%{
+    padding: 50px 70px;
     height:40vh;
     width:60vw;
     overflow:hidden;
