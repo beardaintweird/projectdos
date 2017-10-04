@@ -87,10 +87,12 @@ passport.use(new FacebookStrategy({
   }));
 
 //********************// PASSPORT.JS //********************//
-
-app.get('/', function(req, res) {
+app.get('/', (req,res) => {
   res.render('index');
-});
+})
+app.use('/', require('./routes/index'));
+app.use('/users', require('./routes/users'));
+app.use('/questions', require('./routes/questions'));
 
 // route for showing the profile page
 app.get('/profile', isLoggedIn, function(req, res) {

@@ -20,6 +20,9 @@ module.exports = {
       answer: {
         type: Sequelize.TEXT
       },
+      img: {
+        type: Sequelize.TEXT
+      },
       createdAt: {
         type: Sequelize.DATE
       },
