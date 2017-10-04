@@ -7,18 +7,18 @@ var bodyParser       = require('body-parser');
 var app              = express();
 var passport         = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
+var LocalStrategy    = require('passport-local').Strategy;
 var configAuth       = require('./config/auth');
 var db               = require('./models')
 var User             = db.user;
 var flash            = require('connect-flash');
 var path             = require('path');
+var session          = require('express-session');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -34,7 +34,7 @@ app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
 
 
-//********************// PASSPORT.JS //********************//
+//********************// PASSPORT.JS FACEBOOK //********************//
 
 // Serialize Sessions
 passport.serializeUser(function(user, done) {
@@ -76,8 +76,9 @@ passport.use(new FacebookStrategy({
 //         });
 //       });
 //     }
-(req, token, refreshToken, profile, done) => {
-    console.log('token', token, 'refereshToken', refreshToken, 'profile', profile);
+
+(req, accessToken, refreshToken, profile, done) => {
+    // console.log('accessToken', accessToken, 'refereshToken', refreshToken, 'profile', profile);
 
     //Do your staff here, whatever you want...
 
@@ -86,7 +87,7 @@ passport.use(new FacebookStrategy({
 
   }));
 
-//********************// PASSPORT.JS //********************//
+//********************// PASSPORT.JS FACEBOOK //********************//
 app.get('/', (req,res) => {
   res.render('index');
 })
@@ -111,7 +112,7 @@ app.get('/auth/facebook',
 // }));
 
 app.get('/auth/facebook/callback', passport.authenticate('facebook', { session: false }), (req, res) => {
-    res.render('profile', {user: req.user});
+    res.render('fbprofile', {user: req.user});
     console.log('req.user', req.user);
 });
 
@@ -134,24 +135,24 @@ function isLoggedIn(req, res, next) {
     res.redirect('/');
 }
 
-//********************// PASSPORT.JS //********************//
+//********************// PASSPORT.JS FACEBOOK //********************//
 
 // catch 404 and forward to error handler
-// app.use(function(req, res, next) {
-//   var err = new Error('Not Found');
-//   err.status = 404;
-//   next(err);
-// });
-//
-// // error handler
-// app.use(function(err, req, res, next) {
-//   // set locals, only providing error in development
-//   res.locals.message = err.message;
-//   res.locals.error = req.app.get('env') === 'development' ? err : {};
-//
-//   // render the error page
-//   res.status(err.status || 500);
-//   res.render('error');
-// });
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
 
 module.exports = app;

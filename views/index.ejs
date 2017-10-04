@@ -42,31 +42,36 @@
               <div class="container-left" style="float: left; width: 50%">
                 <h4> Sign in</h4>
 
-                <div class="input">
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="usr" placeholder="Username">
-                  </div>
-                  <div class="form-group">
-                    <input type="password" class="form-control" id="pwd" placeholder="Password">
-                  </div>
+                    <div class="input">
 
-                  <div class="login">
-                    <button class="btn btn-primary btn-lg btn-block  ">Log In</button>
-                  </div>
+                      <form action ="/login" method="post">
+                        <div class="form-group">
+                          <input type="text" name="username" class="form-control" id="usr" placeholder="Username">
+                        </div>
+                        <div class="form-group">
+                          <input type="password" name="password" class="form-control" id="pwd" placeholder="Password">
+                        </div>
+                      </form>
 
-                  <div class="register">
-                    <p> Don't have an account? <a class="signup" href=""> Sign up  </a> </p>
-                  </div>
+                      <div class="login">
+                        <input type="submit" value="submit" class="btn btn-primary btn-lg btn-block  "></input>
+                      </div>
 
-                </div>
+                      <div class="register">
+                        <p> Don't have an account? <a class="signup" href=""> Sign up  </a> </p>
+                      </div>
+
+                    </div>
+
               </div>
 
               <div class="container-right" style="float: left; width: 50%">
                 <h4> <strong> or </strong> Login with: </h4>
                 <div class="authButton">
                   <a class="fa fa-facebook btn btn-secondary btn-lg btn-block blue" href="/auth/facebook">  Facebook  </a>
-                  <a class="fa fa-twitter btn btn-secondary btn-lg btn-block light blue" href="">  Twitter  </a>
                   <a class="fa fa-google btn btn-secondary btn-lg btn-block red" href="">  Google  </a>
+                  <a class="fa fa-twitter btn btn-secondary btn-lg btn-block light blue" href="">  Twitter  </a>
+
                   <a class="fa fa-linkedin btn btn-secondary btn-lg btn-block green" href="">  Linkedin  </a>
                 </
               </div>

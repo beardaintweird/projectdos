@@ -14,14 +14,20 @@
   </head>
 
     <body>
+
       <div id="background">
           <div class="profile_container text-center">
                 <h2> Hello <%= user.displayName %> </h2>
                 <h1> Welcome to AR.Xperience </h1>
                 <a href="/logout" class="btn btn-default btn-sm">Logout</a>
           </div>
-        </div>
       </div>
+
+
+      <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+      <script>
+        setTimeout(responsiveVoice.speak("Welcome to the A R Experience" + "<%= user.displayName %>"),15000);
+      </script>
 
     </body>
 
