@@ -4,7 +4,8 @@ module.exports = (sequelize, DataTypes) => {
     question: DataTypes.TEXT,
     opt1: DataTypes.TEXT,
     opt2: DataTypes.TEXT,
-    answer: DataTypes.TEXT
+    answer: DataTypes.TEXT,
+    img: DataTypes.TEXT
   });
   question.associate = function(models) {
     question.belongsToMany(models.user, {
