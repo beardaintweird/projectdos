@@ -11,4 +11,13 @@ router.get('/', (req,res) => {
     .catch(err=>res.status(500).json(err));
 });
 
+router.get('/:id', (req,res) => {
+  db.question.findById(req.params.id)
+    .then((question) => {
+      question = question.dataValues
+      res.render('question', {question})
+    })
+    .catch(err=>res.status(500).json(err));
+})
+
 module.exports = router;
